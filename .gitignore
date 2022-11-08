@@ -1,0 +1,10 @@
+.vscode
+.env
+.devcontainer
+*.o
+*.sconsign.dblite
+*.hex
+*.elf
+*.bin
+tmp
+compile_commands.json
