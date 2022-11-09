@@ -1,9 +1,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define PAD_TIME 5000
-#define PAD1_TIME 3000
-
 int main(void) {
   // led
   PORTA.DIRSET |= PIN2_bm;
