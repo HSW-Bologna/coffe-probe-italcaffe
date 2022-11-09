@@ -1,3 +1,4 @@
+import os
 def PhonyTargets(
     target,
     action,
@@ -25,7 +26,8 @@ env_options = {
     "CC": "avr-gcc",
     "CPPDEFINES": ["F_CPU={}".format(FREQUENCY)],
     "CFLAGS": ["-std=c99", "-Wall", "-g", "-Os"] + DEVICE_PACK_OPTS,
-    "LINKFLAGS": ["-Wl,-T,avrxmega3.xn"] + DEVICE_PACK_OPTS
+    "LINKFLAGS": ["-Wl,-T,avrxmega3.xn"] + DEVICE_PACK_OPTS,
+    "ENV": os.environ
 }
 
 env = DefaultEnvironment(**env_options)
@@ -50,4 +52,4 @@ except AttributeError:
 PhonyTargets(
     "size",  "avr-size --mcu={} --format=avr {}".format(MCU, ELF), binary, env)
 PhonyTargets(
-    "flash", f"./.env/bin/pymcuprog write -f {HEX} -d {MCU} -t uart -u /dev/ttyUSB0", hexfile, env)
+    "flash", f"pymcuprog write -f {HEX} -d {MCU} -t uart -u /dev/ttyUSB0 --erase --verify", hexfile, env)
