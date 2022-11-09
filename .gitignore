@@ -1,7 +1,7 @@
 .vscode
 .env
 .devcontainer
-*.o
+main/*.o
 *.sconsign.dblite
 *.hex
 *.elf
