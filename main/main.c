@@ -10,7 +10,7 @@ int main(void) {
   PORTA.DIRSET |= PIN1_bm;
 
   int i;
-  for (i = 0; i < 30; i++) {
+  for (i = 0; i < 10; i++) {
     PORTA.OUT |= PIN2_bm;
     _delay_ms(250);
     PORTA.OUT &= ~PIN2_bm;
